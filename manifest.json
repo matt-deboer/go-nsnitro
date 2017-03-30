@@ -1,0 +1,7 @@
+{
+    "dependencies": {
+        "github.com/stretchr/testify": {
+            "revision": "1297dc01ed0a819ff634c89707081a4df43baf6b"
+        }
+    }
+}

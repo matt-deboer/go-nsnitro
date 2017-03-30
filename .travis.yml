@@ -1,0 +1,28 @@
+sudo: required
+services:
+- docker
+language: go
+go:
+- 1.8
+script:
+- make release
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key:
+    secure: kDr+LxgeN6mWHx+CCjLx4khCFGI7J9UZtWaii7lQ/7vXSjydERfbFiZNOUfXxCSFjq/pwA3cqdWet3V1v9mdh0UfTZzKk7RAYWSWLur4MN+k9ZsyDnrYQBGcW+oTmy7shc9WO5pWcfebZLk6YMjJBRu0JQLMKh1B1BG5+SjvaNmLWG/rT04iJmDWjSKL1lGGCqzZobcIQFNoZmTSlXwt1R5GDC+wxaUBWJ0tl3XtL/+cE6ucuzMcW6qbHez8grPcFopphP7MM5L5Gi5VisX3BDupveefEsfruVHye171BO5hJEvawq5oBK45ECNlksKN/uKylLCbSXFyVL0ABIIa3c1Teojsghvyps862o0Wj7Wb+HTtKuXmGjxfahYGi/epwYYjTLAGFx1YJ5uxUWtPD8JCUY2PvxWiTttYMa5YEQ2QEUKRPnDwl5FTIg5bkmSudpIpFVLQKtG13ond9zPKW4k8dn3Lr1xWayqC6NnsKEqoFwq6RG3m97t/aaTiKFPNLJElNG6q70OCvwVCqdtSUr6rmzqI08fGXO4vuHfIB0+8egUPRPdEyWRvMSbUp5grHTNyZrFY0Lobd7NoEPFXtUXQG2cqfyXBa91Kf2uw8irYl2D/Wq+3V6zEqI93AErHsei3rW9TT/WnE4urMbOFn+KeCdc7fylHot5JSZ3k9V0=
+  file: bin/nsnitro
+  on:
+    repo: matt-deboer/go-nsnitro
+    tags: true
+after_deploy:
+- docker login -u $DOCKER_USER -p $DOCKER_PASS
+- export REPO=mattdeboer/nsnitro
+- docker build -f Dockerfile -t $REPO:$TRAVIS_TAG .
+- docker push $REPO:$TRAVIS_TAG
+- docker tag $REPO:$TRAVIS_TAG $REPO:latest
+- docker push $REPO:latest
+env:
+  global:
+  - secure: WF0Pi3HWUEbZ1CHE9Trs159OH44jW5E9P6tRQwJVdTMQpWmV7kJzerma0vPpg8eSJZbASqcmjB77KZVXKqNKxpZW00aC3s0MN5LW7amtia79xnziGvz49lPmQVPJ23OoeQLD18vGt8wtjUGFhcMk5TsGWuA3k6nMpzkf/o9fsnsNyA563Y4wleV+iDJexfVK3MdEku04h0IlY4RzE6+QoH4/WP0mqE3BwwT0gF6j7KYI/E0HLEw0dEXdlEeGBq2XiuxRknY0E4uXIz0bX3aSBw7cqfyiCBY8rgyP5qNZWi9cR2bxStYctPjXEn4AtXc/DguGh923tHMHni3/jmmO5QKhU4/T7FsehBFzNOu0wrBKGrhcHWzxJ7+Xn6/67h2tuwWt8hE0miUUOAmxCxtEKCa3m44fmisXB7kSlb8TX7K4JY7YDSkUEuKbIk/nDhesvYvlAQwo2yZRO/syAN+QhjBsFPF4wMr8xHQy3I0qRNXijV0sl22jqkHBT4w+ng895RLoXnZWUTg9MLMwZfjhe/z0tA8TQ1jXn20jO7mGUfCJ+HE9T5SjUQwp/n42YcTrdau3oiMnrXdi+oQO7DD/RmXgFENNGB/xelf+e1P+6G39j7WbGfvhC6j1p4tBCOQT066XxX3ce3MRwWuRcgXCxL/HhLj6PM6afmhKmaq7YDI=
+  - secure: VPqNdrFK1kj/P3mSZq5R1ldQm9f4DhONf+rgy2gGoQvnkvADSgMTY5MpukSAkDUGEii4c64K2c1UMTCT8gaQunKOF5c19NNTw5UC/nkmB8lZGxk2xFF29Z36Qwgju90IWY7pJAMsM0MnHWVJvGrOfW1i6koheKpFyitG9LqDXYjoH9fF7vuJvGMrfozhjloxocifYzmTyLRaNUMCXizQUxPYVfZpFwIx9dgCBZ8/9ehBr8llsWyHlRq0SExCdgP5Q7P6M8Oaa3qc12pwLi4IOx/I22DtxnMh4S/j37+uhOJTIkrZxRMJlLCS0nHIfygHMq0qoRg6sT9f+P6n/cy0wIkPZr5StYWw3XgU7a+zRRFRTGi9UjZ2sqsC2dCt7g7bjOH8ksUR570Og3ekDDlyV6mSiG36h+kMeBHw/naGnWMzb8TfBS5whkOsEncfoQNmE/ygONuXXl32+6GZ1xJ7i9od4vdyZEfGnBStMleY+aLXUGwMdKXc1/B2rgUUhBEQqeEiDrU4f7OkQBInH7bv63p5NCW4QoxD/QzhhzziPUkDcqnvucuxK1YsFd7TgYgbadgDCrOI5enBBYVbAqltF9tiGzxBfwr+74RNXh/8b+45w/mT7tMjRXTA/3KJyCF1dASQeGKcdgkrqzBLmYdFo+VINRePA0AgvaYFSonfZrE=

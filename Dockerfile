@@ -1,5 +1,4 @@
-FROM alpine:3.3
-MAINTAINER Dylan Meissner "https://github.com/dylanmei/go-nsnitro"
+FROM alpine:3.5
 
 ENV NSNITRO_SERVER ""
 ENV NSNITRO_USERNAME ""

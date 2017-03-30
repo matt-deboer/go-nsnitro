@@ -1,0 +1,102 @@
+{
+    "memo": "5dfe825123e49c5d8885142b71a9699f7343e60692f329a971d0fa2060779874",
+    "projects": [
+        {
+            "name": "github.com/alecthomas/template",
+            "branch": "master",
+            "revision": "a0175ee3bccc567396460bf5acd36800cb10c49c",
+            "packages": [
+                ".",
+                "parse"
+            ]
+        },
+        {
+            "name": "github.com/alecthomas/units",
+            "branch": "master",
+            "revision": "2efee857e7cfd4f3d0138cc3cbb1b4966962b93a",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/buger/jsonparser",
+            "branch": "master",
+            "revision": "016ea00d7ed52c8acc470d90b03d2e6c13516814",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/fatih/color",
+            "version": "v1.4.1",
+            "revision": "9131ab34cf20d2f6d83fdc67168a5430d1c7dc23",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/mattn/go-colorable",
+            "version": "v0.0.7",
+            "revision": "d228849504861217f796da67fae4f6e347643f15",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/mattn/go-isatty",
+            "version": "v0.0.2",
+            "revision": "fc9e8d8ef48496124e79ae0df75490096eccf6fe",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/mgutz/ansi",
+            "branch": "master",
+            "revision": "9520e82c474b0a04dd04f8a40959027271bab992",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/mgutz/logxi",
+            "version": "v1",
+            "revision": "aebf8a7d67ab4625e0fd4a665766fef9a709161b",
+            "packages": [
+                "v1"
+            ]
+        },
+        {
+            "name": "github.com/rodaine/table",
+            "version": "v1.0.0",
+            "revision": "212a2ad1c462ed4d5b5511ea2b480a573281dbbd",
+            "packages": [
+                "."
+            ]
+        },
+        {
+            "name": "github.com/stretchr/testify",
+            "revision": "1297dc01ed0a819ff634c89707081a4df43baf6b",
+            "packages": [
+                "assert",
+                "require"
+            ]
+        },
+        {
+            "name": "golang.org/x/sys",
+            "branch": "master",
+            "revision": "9a7256cb28ed514b4e1e5f68959914c4c28a92e0",
+            "packages": [
+                "unix"
+            ]
+        },
+        {
+            "name": "gopkg.in/alecthomas/kingpin.v2",
+            "version": "v2.2.3",
+            "revision": "e9044be3ab2a8e11d4e1f418d12f0790d57e8d70",
+            "packages": [
+                "."
+            ]
+        }
+    ]
+}

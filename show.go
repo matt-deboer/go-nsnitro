@@ -3,10 +3,10 @@ package main
 import (
 	"fmt"
 
-	"gopkg.in/alecthomas/kingpin.v2"
+	kingpin "gopkg.in/alecthomas/kingpin.v2"
 
-	"github.com/dylanmei/go-nsnitro/nsnitro"
 	"github.com/fatih/color"
+	"github.com/matt-deboer/go-nsnitro/nsnitro"
 	"github.com/rodaine/table"
 )
 
@@ -168,7 +168,7 @@ func doShowServiceGroup(client *nsnitro.Client) {
 			kingpin.Fatalf(err.Error())
 		}
 		for i, binding := range serverBindings {
-			t.AddRow(fmt.Sprintf("Server.%d", i), binding.ServerName)
+			t.AddRow(fmt.Sprintf("Server.%d", i), binding.ServerName, binding.Port, binding.State)
 		}
 
 		lbMonitorBindings, err := client.GetServiceGroupLBMonitorBindings(*show_servicegroup_name)
@@ -312,7 +312,7 @@ func newTable(columns ...string) table.Table {
 }
 
 func newPanel(resourceType string) table.Table {
-	tbl := table.New(resourceType, "")
+	tbl := table.New(resourceType, "", "", "")
 	tbl.WithHeaderFormatter(func(string, ...interface{}) string {
 		return ""
 	})

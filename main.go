@@ -8,7 +8,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/dylanmei/go-nsnitro/nsnitro"
+	"github.com/matt-deboer/go-nsnitro/nsnitro"
 	"gopkg.in/alecthomas/kingpin.v2"
 )
 
