@@ -1,5 +1,6 @@
 nsnitro
 -------
+[![Build Status](https://travis-ci.org/matt-deboer/go-nsnitro.svg?branch=master)](https://travis-ci.org/matt-deboer/go-nsnitro)
 
 A NetScaler 10+ Nitro API cli
 
